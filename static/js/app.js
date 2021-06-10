@@ -46,7 +46,7 @@ function create_metadata(sample) {
         window.casesperonemil = value
       
       } else {
-        var somethingelse = "BLAH"
+        var somethingelse = ""
 
 
       }      

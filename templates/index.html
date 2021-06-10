@@ -1472,11 +1472,24 @@
         .style("text-anchor", "end");
     
     // Add Y axis
-    var y =d3.scaleSqrt()
-      .domain([d3.min(data, function(d) { return d.PopulationAffected; }),d3.max(data, function(d) { return d.PopulationAffected; })])
+    var y =d3.scaleLinear()
+      .domain([0, 25])
       .range([ height, 0]);
     svg2.append("g")
       .call(d3.axisLeft(y));
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     // Bars
     svg2.selectAll("mybar")
@@ -1489,7 +1502,7 @@
         .attr("fill-opacity", .8)
         .attr("stroke", "#00FFFF")
         // no bar at the beginning thus:
-        .attr("height", function(d) { return height - y(0); }) // always equal to 0
+        .attr("height", function(d) { return height + y(0); }) // always equal to 0
         .attr("y", function(d) { return y(0); })
     
     // Animation
@@ -2039,6 +2052,7 @@ var mousemove = function(d) {
 Tooltip.html(d.Country + "<br>" + "Total Cases: " + d.TotalCases + "<br>" + "Active Cases: "+  d.ActiveCases + "<br>" + "Total Deaths: "+  d.TotalDeaths)
   .style("left", (d3.mouse(this)[0]+20) + "px")
   .style("top", (d3.mouse(this)[1]+75) + "px")
+  
 }
 var mouseleave = function(d) {
 Tooltip.style("opacity", 5)
@@ -2055,7 +2069,7 @@ svg
 .append("circle")
   .attr("cx", function(d){ return projection([d.long,d.lat])[0] })
   .attr("cy", function(d){ return projection([d.long,d.lat])[1] })
-  .attr("r", d => d.Total / 50 )
+  .attr("r", d => d.Total / 100 )
   .attr("class", "circlee")
   .style("fill", "#00FFFF")
   .attr("stroke", "#000000")
@@ -2095,7 +2109,7 @@ svg
 .selectAll("circle")
   .attr("cx", function(d){ return projection([d.long,d.lat])[0] })
   .attr("cy", function(d){ return projection([d.long,d.lat])[1] })
-  .attr("r", d => d[selectedGroup] / 50 )
+  .attr("r", d => d[selectedGroup] / 100 )
   .attr("class", "circlee")
   .style("fill", "#00FFFF")
   .attr("stroke", "#000000")
