@@ -6,14 +6,12 @@ function create_metadata(sample) {
       var metaSample = d3.select(`#sample-metadata`).html(""); 
 
     metaSample.html("");
-  
 
       Object.entries(sample).forEach(function([key,value]){   
         
       if (key === 'Country') {
         window.countryname = value
       
-   
       } if (key === "A) World Population") {
         window.worldpop = value
 
@@ -23,7 +21,6 @@ function create_metadata(sample) {
       } if (key === "Aa) Total Cases") {
         window.totalcases = value
       
-
       } if (key === "D) Total Recovered") {
         window.trecovered = value
 
@@ -47,26 +44,9 @@ function create_metadata(sample) {
       
       } else {
         var somethingelse = ""
-
-
-      }      
-        var hi = " "
-        
-
-    
-
-   
-      
-
-
-
-
-
-
+      }    
       })
  
-  
-
       
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.html("<br>") 
@@ -74,15 +54,11 @@ function create_metadata(sample) {
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Country: "}  ${window.countryname} `)
 
-
-
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Total Population: "} ${window.worldpop}`)
 
-
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Total Cases: "} ${window.totalcases}`)
-
 
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Population Affected: "} ${window.worldpopaff}`)
@@ -90,17 +66,11 @@ function create_metadata(sample) {
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Total Cases Recovered: "} ${window.trecovered}`)
 
-
-       
-
-
-
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Total Active Cases: "} ${window.activecases}`)
 
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Percentage Active: "} ${window.pctactive}`)
-
 
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.text(`${"Total Critical Cases: "} ${window.criticalc}`)

@@ -1,8 +1,8 @@
 
 import pandas as pd
-
-def dict_list():
-    info_mongodbpairs = pd.read_csv('static/images/covid16_table.csv')
+def countries_dropdown_data(main_table):
+    print("------------------")
+    info_mongodbpairs = main_table
     info_mongodbpairs = info_mongodbpairs.iloc[:,1:].fillna('0')
     info_mongodbpairs = info_mongodbpairs.drop(columns=['lat', 'long'])
 
@@ -19,7 +19,6 @@ def dict_list():
     info_mongodbpairs = info_mongodbpairs.drop(columns=['New Cases', 'New Deaths'])
     info_mongodbpairs =  info_mongodbpairs.sort_values(by="Country")
 
-    list_of_dicts = []
     info_mongodbpairs = info_mongodbpairs.transpose() 
     info_mongodbpairs = info_mongodbpairs.to_dict()
     list_of_dics = [value for value in info_mongodbpairs.values()]
