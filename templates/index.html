@@ -3,9 +3,8 @@
 
 <head>
 
-
-    <meta property="og:title" content="Global Coronavirus (COVID-19) Live Visualization">
-    <meta property="og:description" content="Global Coronavirus (COVID-19) Live Visualization">
+    <meta property="og:title" content="Global Coronavirus (COVID-19) Live Visualization by Randy Payano">
+    <meta property="og:description" content="Global Coronavirus (COVID-19) Live Visualization by Randy Payano">
     <meta property="og:image" content="https://i.ibb.co/Gk51wjk/webi.jpg">
     <meta property="og:url" content="coronaviruscovid19.herokuapp.com">
 
@@ -13,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Global Coronavirus (COVID-19) Live Visualization by Randy Payano">
-    <title>Global Coronavirus (COVID-19) Live Visualization by Randy Payano</title>
+    <title>Global Coronavirus (COVID-19) Live Visualization</title>
     <meta name="keywords" content="Randy Payano,CoronaVirus, Covid19, Virus, Pandemic, Visualization, flu, global, d3">
     <link rel="stylesheet" href="bootstrap.min.css" media="screen">
 
@@ -1542,15 +1541,6 @@
             })
         </script>
 
-
-
-
-
-
-
-
-
-
         <script>
             // set the dimensions and margins of the graph
             var margin = {
@@ -1572,8 +1562,8 @@
                     "translate(" + margin.left + "," + margin.top + ")");
 
             // Parse the Data
-            d3.csv("data/data_stacked.csv", function(data) {
-
+            d3.csv("/data_stacked", function(data) {
+                console.log(data)
                 // List of subgroups = header of the csv files = soil condition here
                 var subgroups = data.columns.slice(1)
 
@@ -1625,9 +1615,10 @@
                     .attr("x", -margin.top + 220)
                     .text("Confirmed Cases")
                 svg5.append("circle").attr("cx", 10).attr("cy", 25).attr("r", 6).style("fill", "#000000")
-                svg5.append("text").attr("x", 20).attr("y", 25).text("Confirmed Cases").style("font-size", "15px").attr("alignment-baseline", "middle")
+                svg5.append("text").attr("x", 20).attr("y", 25).text("Deaths").style("font-size", "15px").attr("alignment-baseline", "middle")
+
                 svg5.append("circle").attr("cx", 10).attr("cy", 40).attr("r", 6).style("fill", "#00FFFF")
-                svg5.append("text").attr("x", 20).attr("y", 40).text("Deaths").style("font-size", "15px").attr("alignment-baseline", "middle")
+                svg5.append("text").attr("x", 20).attr("y", 40).text("Confirmed Cases").style("font-size", "15px").attr("alignment-baseline", "middle")
 
 
                 // Create a tooltip
@@ -1717,8 +1708,8 @@
                     "translate(" + margin.left + "," + margin.top + ")");
 
             // Parse the Data
-            d3.csv("data/chinacase-conditions.csv", function(data) {
-
+            d3.csv("/hubei_preconditions", function(data) {
+                console.log(data)
                 // List of subgroups = header of the csv files = soil condition here
                 var subgroups = data.columns.slice(1)
 
@@ -1773,9 +1764,10 @@
 
 
                 svg6.append("circle").attr("cx", 110).attr("cy", 25).attr("r", 6).style("fill", "#000000")
-                svg6.append("text").attr("x", 120).attr("y", 25).text("Confirmed Cases").style("font-size", "15px").attr("alignment-baseline", "middle")
+                svg6.append("text").attr("x", 120).attr("y", 25).text("Deaths").style("font-size", "15px").attr("alignment-baseline", "middle")
+
                 svg6.append("circle").attr("cx", 110).attr("cy", 40).attr("r", 6).style("fill", "#00FFFF")
-                svg6.append("text").attr("x", 120).attr("y", 40).text("Deaths").style("font-size", "15px").attr("alignment-baseline", "middle")
+                svg6.append("text").attr("x", 120).attr("y", 40).text("Confirmed Cases").style("font-size", "15px").attr("alignment-baseline", "middle")
 
                 // Create a tooltip
                 // ----------------

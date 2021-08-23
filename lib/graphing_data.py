@@ -190,3 +190,39 @@ def graph_progression_line():
     confirmed_data.loc[:,'time']=pd.to_datetime(confirmed_data['time'])
     response =  confirmed_data.to_csv()
     return response
+
+
+def hubei_age_data():
+    """data for age graph"""
+    data = pd.DataFrame([{
+    "group": "0 to 9", "Confirmed cases": "416", "Deaths": "0", "Mortality": "0.00%"},
+    {"group": "10 to 19", "Confirmed cases": "549", "Deaths": "1", "Mortality": "0.20%"},
+    {"group": "20 to 29", "Confirmed cases": "3619", "Deaths": "7", "Mortality": "0.10%"},
+    {"group": "30 to 39", "Confirmed cases": "7600", "Deaths": "18", "Mortality": "0.20%"},
+    {"group": "40 to 49", "Confirmed cases": "8571", "Deaths": "38", "Mortality": "0.30%"},
+    {"group": "50 to 59", "Confirmed cases": "10008", "Deaths": "130", "Mortality": "0.90%"},
+    {"group": "60 to 69", "Confirmed cases": "8583", "Deaths": "309", "Mortality": "2.40%"},
+    {"group": "70 to 79", "Confirmed cases": "3918", "Deaths": "312", "Mortality": "5.60%"},
+    {"group": "80 and older", "Confirmed cases": "1408", "Deaths": "208", "Mortality": "11.10%"}])
+
+    hubei_data_stacked = data.to_csv()
+
+    return hubei_data_stacked
+
+
+
+def hubei_preconditions_data():
+    """data for pre-condition graph"""
+    data = pd.DataFrame([{
+                                        "group": "Missing Conditions", "Confirmed cases": "23690", "Deaths": "617", "Mortality": "1.90%"},
+                                        {"group": "No Conditions", "Confirmed cases": "15536", "Deaths": "133", "Mortality": "0.50%"},
+                                        {"group": "Hypertension", "Confirmed cases": "2683", "Deaths": "161", "Mortality": "3.80%"},
+                                        {"group": "Diabetes", "Confirmed cases": "1102", "Deaths": "80", "Mortality": "4.50%"},
+                                        {"group": "Respiratory disease", "Confirmed cases": "511", "Deaths": "32", "Mortality": "4.00%"},
+                                        {"group": "Cardiovascular disease", "Confirmed cases": "873", "Deaths": "92", "Mortality": "6.80%"},
+                                        {"group": "Cancer", "Confirmed cases": "107", "Deaths": "6", "Mortality": "3.60%"
+                                         }])
+
+    hubei_preconditions = data.to_csv()
+
+    return hubei_preconditions

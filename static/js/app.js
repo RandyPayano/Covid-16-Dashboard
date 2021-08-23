@@ -1,4 +1,3 @@
-
 /// Create metadata panel
 function create_metadata(sample) {
 
@@ -46,7 +45,6 @@ function create_metadata(sample) {
         var somethingelse = ""
       }    
       })
- 
       
       var new_pp = metaSample.append("p").style("text-anchor", "left");
       new_pp.html("<br>") 
@@ -83,17 +81,6 @@ function create_metadata(sample) {
       
 
     });
-    
-
-
-
-
-
-
-
-
-
-
 
 }
 

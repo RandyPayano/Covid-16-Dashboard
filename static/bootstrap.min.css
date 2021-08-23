@@ -26,7 +26,7 @@
     --green: #4BBF73;
     --teal: #20c997;
     --cyan: #1F9BCF;
-    --white: #fff;
+    --white: rgb(255, 255, 255);
     --gray: #919aa1;
     --gray-dark: #343a40;
     --primary: #1a1a1a;
@@ -615,6 +615,11 @@ pre code {
     }
 }
 
+@media (min-width: 1500px) {
+    .container {
+        max-width: 1440px
+    }
+}
 .container-fluid,
 .container-sm,
 .container-md,

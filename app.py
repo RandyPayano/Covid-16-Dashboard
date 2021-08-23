@@ -1,19 +1,24 @@
 from flask import Flask, render_template
 from flask import jsonify
 from flask import Flask, render_template
-from lib.country_dropdown_data import countries_dropdown_data
+
 from lib.scrape_main_table import scrape_main_table
+from lib.country_dropdown_data import countries_dropdown_data
 from lib.news import grab_top_news
 from lib.header_totals import total_cases, new_cases, total_deaths, new_deaths, total_recovered, active_cases, pop_affected, pct_recovered, cases_active, mortality_rate
-from lib.graphing_data import graph_pop_affected, graph_mortality_rate, graph_sorted_totals, graph_sorted_newcases, geo_graphing_values, graph_progression_line
-
+from lib.graphing_data import graph_pop_affected, graph_mortality_rate, graph_sorted_totals, graph_sorted_newcases, geo_graphing_values, graph_progression_line, hubei_age_data, hubei_preconditions_data
+import pandas as pd
 app = Flask(__name__, static_url_path='')
+main_table = scrape_main_table()
 # home page
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home_page():
+    # Define variables with news data
+    news_dictionary1, news_dictionary2, news_dictionary3, news_dictionary4 = grab_top_news()
+    
     global main_table
     # scrape data   
-    main_table = scrape_main_table(saveto_csv=False)
+    main_table = scrape_main_table()
     # assign scrapped data to functions
     sorted_totals_response = graph_sorted_totals(main_table).to_html() 
     sorted_newcases_response = graph_sorted_newcases(main_table).to_html() 
@@ -27,9 +32,8 @@ def home_page():
     pctrecovered_response = pct_recovered(main_table).to_html() 
     pctactive_response = cases_active(main_table).to_html() 
     mortalityrate_response = mortality_rate(main_table).to_html()
-
-    # Define variables with news data
-    news_dictionary1, news_dictionary2, news_dictionary3, news_dictionary4 = grab_top_news()
+   
+    
     return render_template("index.html", 
                            dictionary1 = news_dictionary1,
                            dictionary2 = news_dictionary2,
@@ -91,6 +95,25 @@ def cases_progres_d():
     response = graph_progression_line()
     
     return response
+
+# Return data for hubai case
+@app.route('/data_stacked')
+def data_stacked_d():
+    
+    hubai_data_stacked = hubei_age_data()
+
+    return hubai_data_stacked
+
+
+
+# Return data for hubai case
+@app.route('/hubei_preconditions')
+def hubei_preconditions_d():
+    
+
+    hubei_preconditions = hubei_preconditions_data()
+
+    return hubei_preconditions
 
 
 if __name__ == '__main__':
